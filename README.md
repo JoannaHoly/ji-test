@@ -1,2 +1,2 @@
-# justidea
-Zadanie rekrutacyjne dla JustIdea
+# Zadanie rekrutacyjne dla JustIdea
+
