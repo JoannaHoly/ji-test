@@ -84,10 +84,13 @@ a {
 /* NAVIGATION */
 
 @media screen and (min-width: 1024px) {
+	.main__navigation {
+		top: 3rem;
+	}
+
 	.navigation {
 		display: flex;
 		position: relative;
-		top: 3rem;
 		z-index: 10;
 		width: 596px;
 		height: 596px;
@@ -157,7 +160,6 @@ a {
 
 @media screen and (min-width: 1024px) {
 	.navigation__title {
-		margin: 0;
 		padding: 0;
 		font-size: .875rem;
 	}
@@ -186,9 +188,6 @@ a {
 }
 
 @keyframes navigation-label-desktop {
-	from {
-		opacity: 0;
-	}
 	to {
 		opacity: 1;
 	}
@@ -339,6 +338,10 @@ a {
 		border-radius: 40px;
 		border: 3px solid var(--color-light-2);
 		transition: background-color .3s ease;
+	}
+	
+.navigation__link:hover .navigation__icon-wrapper {
+	background: var(--color-light-2)
 }
 
 @media screen and (min-width: 1024px) {
@@ -363,6 +366,7 @@ a {
 		grid-area: right;
 	}
 }
+
 .navigation__icon {
 	width: 60px;
 	height: 60px;
@@ -375,10 +379,6 @@ a {
 		width: 80px;
 		height: 80px;
 	}
-}
-
-.navigation__link:hover .navigation__icon-wrapper {
-	background: var(--color-light-2)
 }
 
 .navigation__link:hover .navigation__icon {
@@ -642,7 +642,7 @@ a {
 	padding: .6rem 1rem .5rem .5rem;
 	font-size: .875rem;
 	width: auto;
-	color: var(--color-dark-1);
+	color: var(--color-light-1);
 }
 
 .contact__label--consents::after {
