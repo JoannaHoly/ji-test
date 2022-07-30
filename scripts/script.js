@@ -1,13 +1,16 @@
 window.addEventListener('load', function(event) {
-  const navigationItem = document.querySelectorAll('.navigation .navigation__item');
+
+  const navigationItem = document.querySelectorAll('.navigation__item');
   const numOfNavigationItem = navigationItem.length;
+  const fraction = 360 / numOfNavigationItem;
 
   let oldWindowWidth = 0;
   let newWindowWidth = window.innerWidth;
+
+  let moveToTop = -60;
+  let angle = 0;
   
   const animatedGearNav = () => {
-    let moveToTop = -60;
-    let angle = 0;
     
     for (let i = 0; i < numOfNavigationItem; i++) {
       const navigationLink = navigationItem[i].getElementsByClassName('navigation__link')[0];
@@ -15,9 +18,10 @@ window.addEventListener('load', function(event) {
       const navigationIconWrapper = navigationItem[i].getElementsByClassName('navigation__icon-wrapper')[0];
       
       /* Mobile animations
-         (Do animations only if windows size is smaller than 1024 or 1024 breakpoint was crossed after resize)
+          (Do animations only if windows size is smaller than 1024 or 1024 breakpoint was crossed after resize)
       */
       if (newWindowWidth < 1024 && (oldWindowWidth === 0 || oldWindowWidth > 1023)) {
+
         // Reset element rotations
         navigationItem[i].style.transform = 'rotate(0deg)';
         navigationLink.style.transform = 'rotate(0deg)';
@@ -27,20 +31,22 @@ window.addEventListener('load', function(event) {
         navigationLabel.classList.remove('navigation__label--top', 'navigation__label--left', 'navigation__label--bottom', 'navigation__label--right');
         navigationIconWrapper.classList.remove('navigation__icon-wrapper--top', 'navigation__icon-wrapper--left', 'navigation__icon-wrapper--bottom', 'navigation__icon-wrapper--right');
 
-        navigationItem[i].style.top = `calc(${moveToTop}px - ${i}rem)`; // add styles that move every element to navigation section top
+        // Add styles that move every element to navigation section top
+        navigationItem[i].style.top = `calc(${moveToTop}px - ${i}rem)`; 
 
-        moveToTop -= 60; // Set top position for next element 
+        // Set top position for next element 
+        moveToTop -= 60;
       }
 
       /* Desktop animations
-         (Do animations only if windows size is bigger than 1024 or 1024 breakpoint was crossed after resize)
+          (Do animations only if windows size is bigger than 1024 or 1024 breakpoint was crossed after resize)
       */
       else if (newWindowWidth > 1023 && oldWindowWidth < 1024) {
 
         // Reset top position
         navigationItem[i].style.top = 'auto';
 
-        const fraction = 360 / numOfNavigationItem;
+        // Set variables
         const negativeAngle = -Math.abs(angle);
 
         // Position item in right place in circle by rotating it
@@ -50,7 +56,6 @@ window.addEventListener('load', function(event) {
         navigationLink.style.transform = `rotate(${negativeAngle}deg)`;
 
         // Depending on angle - add style to link, link label and link icon wrapper
-
         switch (true) {
           case (angle < 20):
             navigationLink.classList.add('navigation__link--top');
@@ -100,6 +105,7 @@ window.addEventListener('load', function(event) {
   window.addEventListener('resize', function(event) {
     oldWindowWidth = newWindowWidth;
     newWindowWidth = window.innerWidth;
+    
     animatedGearNav();
   });
 });
