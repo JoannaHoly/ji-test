@@ -585,7 +585,7 @@ a {
 	content: ":";
 }
 
-.contact__input:focus + .contact__label:not(.contact__label--consents) {
+.contact__input:focus + .contact__label:not(.contact__label--consents):not(.contact__label--select) {
 	display: inline-block;
 	position: absolute;
 	bottom: 3.2rem;
@@ -628,6 +628,7 @@ a {
 }
 
 .contact__input--select:focus + .contact__label--select::after {
+	top: .6rem;
 	transform: rotate(180deg) translate(0, .2rem);
 }
 
