@@ -6,11 +6,11 @@ window.addEventListener('load', function(event) {
 
   let oldWindowWidth = 0;
   let newWindowWidth = window.innerWidth;
-
-  let moveToTop = -60;
-  let angle = 0;
   
   const animatedGearNav = () => {
+
+    let moveToTop = -60;
+    let angle = 0;
     
     for (let i = 0; i < numOfNavigationItem; i++) {
       const navigationLink = navigationItem[i].getElementsByClassName('navigation__link')[0];
@@ -105,7 +105,7 @@ window.addEventListener('load', function(event) {
   window.addEventListener('resize', function(event) {
     oldWindowWidth = newWindowWidth;
     newWindowWidth = window.innerWidth;
-    
+
     animatedGearNav();
   });
 });
