@@ -1,2 +1,2 @@
-# Zadanie rekrutacyjne dla JustIdea
+# Zadanie rekrutacyjne dla JI
 
